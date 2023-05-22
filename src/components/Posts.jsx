@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import {getPosts} from '../app/features/posts/postsSlice'
 
 function Posts() {
-    const {entities, loading} = useSelector((state)=>state.posts);
+    const {entities, loading} = useSelector((state)=>state);
     const dispatch = useDispatch();
   
     useEffect(()=>{
@@ -12,14 +12,14 @@ function Posts() {
   
     if (loading) return <p>Loading...</p>
   
-    return(entities)?(
+    return(
       <div>
         <h2>Blog Posts</h2>
         {entities.map((post) => (
           <p key={post.id}>{post.title}</p>
         ))}
       </div>
-    ): <></>
+    )
   }
   
   export default Posts;
